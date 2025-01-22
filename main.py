@@ -1,11 +1,11 @@
-import os  # For OS based tasks
-import time  # For delay between retries
-import logging  # For logging
+import os  # For operating system-related tasks, such as reading environment variables
+import time  # For adding delays between retries during SFTP uploads
+import logging  # For logging pipeline progress and errors
 import requests  # For making API requests
 import pandas as pd  # For data processing and manipulation
-import paramiko  # For SFTP file transfer
+import paramiko  # For connecting to and transferring files via SFTP
 from dotenv import load_dotenv  # For securely loading credentials from environment variables
-from io import StringIO  # For in-memory file handling
+from io import StringIO  # For handling in-memory text streams (e.g., saving processed data)
 
 # Load environment variables from the .env file
 load_dotenv()
