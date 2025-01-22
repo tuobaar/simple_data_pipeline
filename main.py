@@ -74,14 +74,14 @@ def process_data(data):
 
 
 # ----------------------------------------
-# Step 3: Upload the CSV to an SFTP Server
+# Step 3: Upload the TXT to an SFTP Server
 # ----------------------------------------
-def upload_to_sftp(csv_buffer, sftp_host, sftp_port, sftp_user, sftp_password, remote_file_path):
+def upload_to_sftp(txt_buffer, sftp_host, sftp_port, sftp_user, sftp_password, remote_file_path):
     """
     Uploads the processed TXT data to an SFTP server and provides instructions to verify the upload.
 
     Args:
-        csv_buffer (StringIO): An in-memory file object containing the TXT data.
+        txt_buffer (StringIO): An in-memory file object containing the TXT data.
         sftp_host (str): Hostname or IP of the SFTP server.
         sftp_port (int): Port number of the SFTP server (default is 22).
         sftp_user (str): Username for SFTP authentication.
@@ -90,7 +90,7 @@ def upload_to_sftp(csv_buffer, sftp_host, sftp_port, sftp_user, sftp_password, r
     """
     try:
         # Reset the file pointer to the beginning of the buffer
-        csv_buffer.seek(0)
+        txt_buffer.seek(0)
 
         # Connect to the SFTP server
         transport = paramiko.Transport((sftp_host, sftp_port))
@@ -99,7 +99,7 @@ def upload_to_sftp(csv_buffer, sftp_host, sftp_port, sftp_user, sftp_password, r
 
         # Upload the file to the remote server
         with sftp.open(remote_file_path, 'w') as remote_file:
-            remote_file.write(csv_buffer.getvalue())  # Write the TXT data to the remote file
+            remote_file.write(txt_buffer.getvalue())  # Write the TXT data to the remote file
             logging.info(f"✅ File successfully uploaded to: {remote_file_path}")
 
         # List the files in the upload directory
