@@ -1,3 +1,4 @@
+# Import libraries
 import os  # For operating system-related tasks, such as reading environment variables
 import time  # For adding delays between retries during SFTP uploads
 import logging  # For logging pipeline progress and errors
